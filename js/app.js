@@ -15,31 +15,30 @@ function comprar() {
     } else {
         comprarPista(quantidade);
     }
-    quantidade = document.getElementById('qtd');quantidade.value = "";
-    quantidade = document.getElementById('qtd').focus();
-    
+    zerarCampoQuantidade(quantidade);
 }
+
 //function para comprar cadeira inferior
 function comprarInferior(quantidade) {
     let inferior = parseInt(document.getElementById('qtd-inferior').innerHTML);
-    if (quantidade <= inferior) {
+    if (quantidade <= inferior && quantidade >= 1) {
         diminuirInferior = inferior - quantidade;
         inferior = document.getElementById('qtd-inferior');inferior.innerHTML = diminuirInferior;
-        alert('Ingresso "Cadeira inferior" comprado com sucesso!')
+        fraseCorreta(quantidade);
     } else {
-        alert('Falha na compra do ingresso "Cadeira inferior". Quantidade indisponível.');
+        fraseCorreta(quantidade);
     }
 }
 
 //function para comprar cadeira superior
 function comprarSuperior(quantidade) {
     let superior = parseInt(document.getElementById('qtd-superior').innerHTML);
-    if (quantidade <= superior) {
+    if (quantidade <= superior && quantidade >= 1) {
         diminuirSuperior = superior - quantidade;
         superior = document.getElementById('qtd-superior');superior.innerHTML = diminuirSuperior;
-        alert('Ingresso "Cadeira superior" comprado com sucesso!')
+        fraseCorreta(quantidade);
     } else {
-        alert('Falha na compra do ingresso "Cadeira superior". Quantidade indisponível.');
+        fraseCorreta(quantidade);
     }
     
 }
@@ -47,15 +46,40 @@ function comprarSuperior(quantidade) {
 //function para comprar pista
 function comprarPista(quantidade) {
     let pista = parseInt(document.getElementById('qtd-pista').innerHTML);
-    if (quantidade <= pista) {
+    if (quantidade <= pista && quantidade >= 1) {
         diminuirPista = pista - quantidade;
         pista = document.getElementById('qtd-pista');pista.innerHTML = diminuirPista;
-        alert('Ingresso "Pista" comprado com sucesso!')
+        fraseCorreta(quantidade);
     } else {
-        alert('Falha na compra do ingresso "Pista". Quantidade indisponível.');
+        fraseCorreta(quantidade);
     }
     
 }
 
+// zerar o campo quantidade e focar nele.
+function zerarCampoQuantidade (quantidade) {
+    quantidade = document.getElementById('qtd');quantidade.value = "";
+    quantidade = document.getElementById('qtd').focus();
+}
 
-// condições para realizar a compra da cadeira inferio
+//função pra escrever a frase correta quando clicar em 'comprar'.
+function fraseCorreta (quantidade) {
+    if (quantidade > 1 ) {
+        alert('Ingressos comprados com sucesso!')
+    } else if (quantidade == 1) {
+        alert('Ingresso comprado com sucesso!')
+    } else {
+        alert('Falha na compra do ingresso. Sertifique-se que haja "Quantidade disponível" suficiente e que digitou a "Quantidade" correta.');
+    }
+
+
+}
+// function realizarCompras (quantidade) {
+//     if (tipoIngresso == 'Cadeira inferior') {
+//         comprarInferior(quantidade);
+//     } else if (tipoIngresso == 'Cadeira superior') {
+//         comprarSuperior(quantidade)
+//     } else {
+//         comprarPista(quantidade);
+//     }
+// }
