@@ -69,17 +69,23 @@ function fraseCorreta (quantidade) {
     } else if (quantidade == 1) {
         alert('Ingresso comprado com sucesso!')
     } else {
-        alert('Falha na compra do ingresso. Sertifique-se que haja "Quantidade disponível" suficiente e que digitou a "Quantidade" correta.');
+        alert('Falha na compra do ingresso. Certifique-se que haja "Quantidade disponível" suficiente e que digitou a "Quantidade" correta.');
     }
 
 
 }
-// function realizarCompras (quantidade) {
-//     if (tipoIngresso == 'Cadeira inferior') {
-//         comprarInferior(quantidade);
-//     } else if (tipoIngresso == 'Cadeira superior') {
-//         comprarSuperior(quantidade)
-//     } else {
-//         comprarPista(quantidade);
+
+
+
+
+//Exercicios complementares
+// verificarNumeroParOuImpar();
+// function verificarNumeroParOuImpar() {
+//     let numeroDigitado = parseFloat(prompt('Digite um número'));
+//     // alert(`O número é ${numeroDigitado}`);
+//     if (numeroDigitado % 2 === 0){
+//          console.log(`O número ${numeroDigitado} é um número par.`);
+// } else { 
+//         console.log(`O número ${numeroDigitado} é um número impar.`);
 //     }
 // }
