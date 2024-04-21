@@ -25,9 +25,12 @@ function comprarInferior(quantidade) {
         diminuirInferior = inferior - quantidade;
         inferior = document.getElementById('qtd-inferior');inferior.innerHTML = diminuirInferior;
         fraseCorreta(quantidade);
+    } else if (quantidade > inferior) {
+        alert('Quantidade indisponível');
     } else {
         fraseCorreta(quantidade);
     }
+    
 }
 
 //function para comprar cadeira superior
@@ -37,6 +40,8 @@ function comprarSuperior(quantidade) {
         diminuirSuperior = superior - quantidade;
         superior = document.getElementById('qtd-superior');superior.innerHTML = diminuirSuperior;
         fraseCorreta(quantidade);
+    } else if (quantidade > superior) {
+        alert('Quantidade indisponível');
     } else {
         fraseCorreta(quantidade);
     }
@@ -50,6 +55,8 @@ function comprarPista(quantidade) {
         diminuirPista = pista - quantidade;
         pista = document.getElementById('qtd-pista');pista.innerHTML = diminuirPista;
         fraseCorreta(quantidade);
+    } else if (quantidade > pista) {
+        alert('Quantidade indisponível');
     } else {
         fraseCorreta(quantidade);
     }
@@ -64,16 +71,21 @@ function zerarCampoQuantidade (quantidade) {
 
 //função pra escrever a frase correta quando clicar em 'comprar'.
 function fraseCorreta (quantidade) {
-    if (quantidade > 1 ) {
+    if (quantidade > 1) {
         alert('Ingressos comprados com sucesso!')
     } else if (quantidade == 1) {
         alert('Ingresso comprado com sucesso!')
+        zerarCampoQuantidade();
     } else {
         alert('Falha na compra do ingresso. Certifique-se que haja "Quantidade disponível" suficiente e que digitou a "Quantidade" correta.');
+        zerarCampoQuantidade();
     }
-
-
 }
+
+document.addEventListener('keypress', function(teclar) {
+    if (teclar.key === 'Enter')
+    comprar();
+})
 
 
 
